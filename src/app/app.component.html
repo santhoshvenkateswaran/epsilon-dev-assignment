@@ -1,0 +1,87 @@
+<h1>Part 1: Card Component</h1>
+<div class="card">
+  <img
+    class="card-img"
+    src="assets/images/card-img.jpg"
+    alt="black dog"
+    width="290px"
+    height="290px"
+  />
+  <div class="card-content">
+    <p class="card-ttile">Beach Day</p>
+    <p class="card-description">Rufus the dog</p>
+    <p class="card-metadata">Modified 02/28/2019 by bfrost</p>
+  </div>
+</div>
+
+<h1>Part 2: Form Elements</h1>
+<form class="form">
+  <div class="form-item">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Enter Name" />
+  </div>
+  <div class="form-item">
+    <label for="Email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Enter Email" />
+  </div>
+  <div class="form-item">
+    <label for="phone">Phone Number</label>
+    <input
+      type="number"
+      name="phone"
+      id="phone"
+      placeholder="Enter Phone Number"
+    />
+  </div>
+  <div class="form-item">
+    <label for="name">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Enter Password"
+    />
+  </div>
+  <div class="form-item">
+    <label for="password-confirm">Confirm Password</label>
+    <input
+      type="password"
+      name="password-confirm"
+      id="password-confirm"
+      placeholder="Confirm Password"
+    />
+  </div>
+  <div class="form-item">
+    <button type="submit" name="save">SAVE</button>
+  </div>
+</form>
+
+<h1>Part 3: Table Functions</h1>
+<table class="table" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th *ngFor="let column of tableColumns">
+        <div class="column-header" (click)="handleColumnClick(column)">
+          <div class="column-header-text">{{ column }}</div>
+          <div class="sort-buttons">
+            <span
+              class="caret-up"
+              [ngClass]="{ active: isSortActive(column, 'asc') }"
+            ></span>
+            <span
+              class="caret-down"
+              [ngClass]="{ active: isSortActive(column, 'desc') }"
+            ></span>
+          </div>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableContent">
+      <td>{{ row.name || "-" }}</td>
+      <td>{{ row.price || "-" }}</td>
+      <td>{{ row.category || "-" }}</td>
+    </tr>
+  </tbody>
+</table>
